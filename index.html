@@ -515,7 +515,7 @@
                         </div>
                         <!-- Added large dummy image for comparison -->
                         <div class="h-48 bg-sub flex items-center justify-center border-b border-gray-100 p-4">
-                             <img src=" images/20.png " alt="インプラントのイラスト" class="max-h-full object-contain mix-blend-multiply">
+                             <img src="images/20.png" alt="インプラントのイラスト" class="max-h-full object-contain mix-blend-multiply">
                         </div>
                         <div class="p-6 flex-grow">
                             <p class="text-sm text-gray-700 leading-relaxed">
@@ -530,7 +530,7 @@
                         </div>
                         <!-- Added large dummy image for comparison -->
                         <div class="h-48 bg-gray-50 flex items-center justify-center border-b border-gray-100 p-4">
-                             <img src=" images/21.png " alt="ブリッジのイラスト" class="max-h-full object-contain mix-blend-multiply">
+                             <img src="images/21.png" alt="ブリッジのイラスト" class="max-h-full object-contain mix-blend-multiply">
                         </div>
                         <div class="p-6 flex-grow">
                             <p class="text-sm text-gray-700 leading-relaxed">
@@ -545,7 +545,7 @@
                         </div>
                         <!-- Added large dummy image for comparison -->
                         <div class="h-48 bg-gray-50 flex items-center justify-center border-b border-gray-100 p-4">
-                             <img src=" images/22.png " alt="入れ歯のイラスト" class="max-h-full object-contain mix-blend-multiply">
+                             <img src="images/22.png" alt="入れ歯のイラスト" class="max-h-full object-contain mix-blend-multiply">
                         </div>
                         <div class="p-6 flex-grow">
                             <p class="text-sm text-gray-700 leading-relaxed">
@@ -841,6 +841,69 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- ここから：追加する大まかな料金表ブロック -->
+                <div class="mt-12 mb-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-accent mb-2">インプラント治療の費用目安（1本あたり）</h3>
+                        <p class="text-sm text-gray-600">※患者様のお口の状態（骨の量など）によって金額は変動いたします。</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 基本費用プラン -->
+                        <div class="bg-white rounded-2xl shadow-sm border-2 border-primary overflow-hidden relative">
+                            <div class="absolute top-0 left-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-br-lg">基本費用</div>
+                            <div class="p-6 pt-10 text-center border-b border-gray-100">
+                                <p class="text-gray-500 font-bold mb-1">インプラント1本あたりの総額目安</p>
+                                <div class="flex items-baseline justify-center gap-1">
+                                    <span class="text-3xl md:text-4xl font-black text-accent">572,000</span>
+                                    <span class="text-lg font-bold text-accent">円〜</span>
+                                    <span class="text-sm text-gray-500">(税抜)</span>
+                                </div>
+                            </div>
+                            <div class="p-5 bg-orange-50/50">
+                                <p class="text-xs text-gray-600 font-medium leading-relaxed mb-3">
+                                    検査・診断から、手術、最終的な被せ物（セラミック等）が入るまでの一連の治療を含んだ基本の合計金額です。
+                                </p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>術前診断（CT・サージカルガイド）</li>
+                                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>インプラント埋入手術（1次・2次）</li>
+                                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>上部構造（人工歯）などの補綴処置</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 難症例オプション費用 -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                            <div class="p-6 border-b border-gray-100">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">オプション</span>
+                                    <h4 class="font-bold text-accent text-lg">難症例向け 追加治療</h4>
+                                </div>
+                                <p class="text-xs text-gray-600 font-medium">他院で「骨が少ない」と断られた方など、土台を造り直す必要がある場合の処置費用目安です。</p>
+                            </div>
+                            <div class="p-0">
+                                <table class="w-full text-sm">
+                                    <tbody>
+                                        <tr class="border-b border-gray-100">
+                                            <th class="p-4 text-left font-medium text-gray-700 bg-gray-50 w-3/5">骨を増やす処置<br><span class="text-xs text-gray-500">（GBR等）</span></th>
+                                            <td class="p-4 text-right font-bold text-accent">60,500円〜</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-100">
+                                            <th class="p-4 text-left font-medium text-gray-700 bg-gray-50">上顎の骨を厚くする処置<br><span class="text-xs text-gray-500">（ソケットリフト等）</span></th>
+                                            <td class="p-4 text-right font-bold text-accent">84,700円〜</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="p-4 text-left font-medium text-gray-700 bg-gray-50">歯肉を整える処置<br><span class="text-xs text-gray-500">（APF・FGG等）</span></th>
+                                            <td class="p-4 text-right font-bold text-accent">60,500円〜</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ここまで：追加する大まかな料金表ブロック -->
 
                 <div class="text-center">
                     <a href="https://www.nakamura-sika.net/dental/price.php" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 md:px-12 rounded-full shadow-lg transition-transform transform hover:-translate-y-1 text-lg">
