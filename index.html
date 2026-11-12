@@ -133,6 +133,19 @@
             color: #FFFFFF;
             border-color: #1E3A5F;
         }
+
+        /* Hero Cinematic Slow Zoom (Ken Burns Effect) */
+        @keyframes heroKenBurns {
+            0% {
+                transform: scale(1.08);
+            }
+            100% {
+                transform: scale(1.0);
+            }
+        }
+        .animate-ken-burns {
+            animation: heroKenBurns 18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -405,85 +418,128 @@
 
     <main>
         <!-- =========================================================
-             1. HERO / FIRST VIEW (圧倒的タイポグラフィ × 大判ビジュアル)
+             1. HERO / FIRST VIEW (フルスクリーン・シネマティック型)
              ========================================================= -->
-        <section class="relative bg-navy-900 text-white overflow-hidden border-b border-white/15">
-            <!-- 背景ビジュアルレイヤー（視認性確保の遮光オーバーレイ付き） -->
-            <div class="absolute inset-0 z-0">
+        <section class="relative bg-navy-950 text-white min-h-[calc(100vh-112px)] flex flex-col justify-between overflow-hidden border-b border-white/15">
+            <!-- 背景フルスクリーンビジュアル（特診室・マイクロスコープ＆CTモニター：images/1.jpg） -->
+            <div class="absolute inset-0 z-0 overflow-hidden">
                 <img src="images/1.jpg" 
                      onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920&q=85'" 
-                     alt="福山市 なかむら歯科クリニック 精密インプラント診療室" 
-                     class="w-full h-full object-cover object-center opacity-35 brightness-105 contrast-95">
-                <div class="absolute inset-0 bg-navy-900/75"></div>
-                <div class="absolute inset-0 bg-arch-grid-dark"></div>
+                     alt="福山市 なかむら歯科クリニック マイクロスコープ・大型CTモニター完備の精密診療室" 
+                     class="w-full h-full object-cover object-center opacity-55 animate-ken-burns">
+                <!-- 左側のコピー視認性を死守し、右側の診療室空間を美しく透かすシネマティック遮光 -->
+                <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/85 to-navy-950/45"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/40"></div>
+                <div class="absolute inset-0 bg-arch-grid-dark opacity-70"></div>
             </div>
 
-            <div class="w-full max-w-[1760px] mx-auto px-4 md:px-12 lg:px-16 py-16 md:py-24 lg:py-28 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                    <!-- 左カラム（7）：DRMコピー＆実績バッジ＆CTA -->
-                    <div class="lg:col-span-7 space-y-8">
-                        <div class="hero-reveal inline-flex items-center gap-3 border border-gold-500/50 bg-navy-900/90 px-4 py-1.5">
-                            <span class="w-2 h-2 bg-gold-400"></span>
-                            <span class="text-xs font-bold tracking-widest text-gold-400">福山市｜骨造成・難症例対応 インプラント専門診療</span>
+            <!-- メインコンテンツ領域（左：巨大コピー＆CTA / 右：院長精密処置大判ビジュアル） -->
+            <div class="w-full max-w-[1760px] mx-auto px-4 md:px-12 lg:px-16 pt-12 pb-10 md:py-16 lg:py-20 my-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    
+                    <!-- 左カラム（7）：圧倒的タイポグラフィ ＆ 削ぎ落としたCTA -->
+                    <div class="lg:col-span-7 space-y-7 md:space-y-9">
+                        <div class="hero-reveal inline-flex items-center gap-3 border-l-2 border-medical-500 bg-navy-950/80 backdrop-blur-xs pl-3.5 pr-4 py-1.5">
+                            <span class="font-en text-[11px] font-extrabold tracking-[0.2em] text-gold-400 uppercase">FUKUYAMA IMPLANT CENTER</span>
+                            <span class="text-white/30">|</span>
+                            <span class="text-xs font-bold tracking-wider text-slate-200">福山市・骨造成／難症例対応</span>
                         </div>
 
-                        <h1 class="hero-reveal font-mincho text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.15] tracking-tight text-white">
+                        <h1 class="hero-reveal font-mincho text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold leading-[1.12] tracking-tight text-white drop-shadow-sm">
                             土台から創る、<br>
                             一生涯を見据えた<br>
                             <span class="text-medical-500">精密インプラント。</span>
                         </h1>
 
-                        <p class="hero-reveal text-base md:text-lg lg:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed">
-                            「骨が薄い」「他院で難しいと言われた」方もご相談ください。<br class="hidden sm:block">
+                        <p class="hero-reveal text-sm sm:text-base md:text-lg text-slate-200 font-medium max-w-xl leading-relaxed">
+                            「骨が薄い」「他院で断られた」方もご相談ください。<br>
                             3D-CT数値診断と骨造成・歯肉形成により、残存歯を守る治療を提供します。
                         </p>
 
-                        <!-- 3つの権威性・信頼スペック（直感バッジ） -->
-                        <div class="hero-reveal grid grid-cols-3 gap-3 sm:gap-4 pt-2 border-t border-white/15">
-                            <div class="bg-navy-900/90 border border-white/10 p-3.5 sm:p-4">
-                                <span class="font-en text-[10px] font-extrabold tracking-widest text-gold-400 block mb-1">CERTIFIED</span>
-                                <p class="text-xs sm:text-sm font-bold text-white leading-snug">OSSTEM<br>臨床研究歯科医院</p>
-                            </div>
-                            <div class="bg-navy-900/90 border border-white/10 p-3.5 sm:p-4">
-                                <span class="font-en text-[10px] font-extrabold tracking-widest text-medical-500 block mb-1">PRECISION</span>
-                                <p class="text-xs sm:text-sm font-bold text-white leading-snug">サージカルガイド<br>全症例100%使用</p>
-                            </div>
-                            <div class="bg-navy-900/90 border border-white/10 p-3.5 sm:p-4">
-                                <span class="font-en text-[10px] font-extrabold tracking-widest text-gold-400 block mb-1">EXPERIENCE</span>
-                                <p class="text-xs sm:text-sm font-bold text-white leading-snug">治療歴20年以上<br>累計400症例以上</p>
-                            </div>
-                        </div>
-
-                        <!-- アクションボタン（左：WEB予約 / 右：「当院の思い」即スクロール） -->
-                        <div class="hero-reveal flex flex-col sm:flex-row gap-4 pt-2">
-                            <a href="https://dentnet-book.genesis-net.co.jp/nakamurashika/" class="bg-medical-600 hover:bg-medical-700 text-white font-bold px-8 py-4 text-center text-sm sm:text-base tracking-wider transition-colors flex items-center justify-center gap-3 shadow-lg">
+                        <!-- アクションボタン -->
+                        <div class="hero-reveal flex flex-col sm:flex-row gap-4 pt-1">
+                            <a href="https://dentnet-book.genesis-net.co.jp/nakamurashika/" class="bg-medical-600 hover:bg-medical-700 text-white font-bold px-8 sm:px-10 py-4 sm:py-5 text-center text-sm sm:text-base tracking-wider transition-all flex items-center justify-center gap-4 shadow-xl">
                                 <span>無料カウンセリング WEB予約</span>
-                                <span class="font-en">→</span>
+                                <span class="font-en text-lg">→</span>
                             </a>
-                            <a href="#doctors-philosophy" class="bg-white/10 hover:bg-white hover:text-navy-900 text-white border border-white/40 font-bold px-8 py-4 text-center text-sm sm:text-base tracking-wider transition-all flex items-center justify-center gap-3">
+                            <a href="#doctors-philosophy" class="bg-navy-950/70 hover:bg-white hover:text-navy-900 text-white border border-white/40 backdrop-blur-xs font-bold px-8 sm:px-10 py-4 sm:py-5 text-center text-sm sm:text-base tracking-wider transition-all flex items-center justify-center gap-3">
                                 <span>当院の思い</span>
                                 <span class="font-en">↓</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 右カラム（5）：大判ビジュアルフレーム -->
+                    <!-- 右カラム（5）：大判ビジュアル（高倍率ルーペ装着・精密処置シーン：images/2.JPG） -->
                     <div class="lg:col-span-5 hero-reveal">
-                        <div class="relative border border-white/20 bg-navy-900 p-3 shadow-2xl">
-                            <div class="relative aspect-[4/5] overflow-hidden bg-navy-950">
+                        <div class="relative bg-navy-950 border border-white/25 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden group">
+                            <!-- コーナーの建築的アクセントライン -->
+                            <div class="absolute top-0 left-0 w-10 h-1 bg-medical-500 z-20"></div>
+                            <div class="absolute top-0 right-0 bg-navy-950/85 backdrop-blur-md px-3.5 py-1.5 border-b border-l border-white/15 z-20">
+                                <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-gold-400">OSSTEM CLINICAL RESEARCH CLINIC</span>
+                            </div>
+
+                            <!-- 院長アップ写真（4:3〜5:4の横幅を活かした迫力構図） -->
+                            <div class="relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden bg-navy-900">
                                 <img src="images/2.JPG" 
-                                     onerror="this.src='https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=85'" 
-                                     alt="福山市 なかむら歯科クリニック 院長 中村 精密インプラント治療" 
-                                     class="w-full h-full object-cover brightness-105 contrast-95">
-                                <div class="absolute inset-x-0 bottom-0 bg-navy-950/85 backdrop-blur-md p-5 border-t border-white/15">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-en text-[10px] tracking-[0.2em] text-gold-400 uppercase">NAKAMURA DENTAL CLINIC</p>
-                                            <p class="text-sm font-bold text-white mt-0.5">3D-CT解析 × 院長・担当医ダブルチェック体制</p>
-                                        </div>
-                                        <span class="font-en text-xs font-extrabold text-medical-500 border border-medical-500/40 px-2.5 py-1">3D-CT</span>
+                                     onerror="this.onerror=null; this.src='images/2.jpg';" 
+                                     alt="拡大鏡（ルーペ）を装着し精密インプラント手術を行うなかむら歯科クリニック院長" 
+                                     class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/15 to-transparent"></div>
+                                
+                                <!-- 写真下部のミニマル・キャプション -->
+                                <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex items-end justify-between gap-4">
+                                    <div>
+                                        <p class="font-en text-[10px] font-bold tracking-[0.25em] text-medical-500 uppercase mb-1">PRECISION &amp; SAFETY</p>
+                                        <p class="text-sm sm:text-base font-bold text-white leading-snug">拡大視野 × 3D-CT解析 × ダブルチェック体制</p>
                                     </div>
+                                    <span class="shrink-0 font-en text-[11px] font-extrabold text-white border border-white/30 bg-navy-900/80 px-3 py-1">
+                                        DIRECTED BY DR. NAKAMURA
+                                    </span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ファーストビュー最下部：建築的ヘアラインで区切られた「3つの実績バー」 -->
+            <div class="relative z-10 border-t border-white/15 bg-navy-950/85 backdrop-blur-md hero-reveal">
+                <div class="w-full max-w-[1760px] mx-auto px-4 md:px-12 lg:px-16">
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15">
+                        <!-- 実績 01 -->
+                        <div class="py-5 md:py-6 md:pr-8 flex items-center justify-between md:justify-start gap-5">
+                            <div>
+                                <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-gold-400 block">01 // CLINICAL HISTORY</span>
+                                <span class="text-xs sm:text-sm font-bold text-slate-300">インプラント治療の臨床経験</span>
+                            </div>
+                            <div class="flex items-baseline gap-1 md:ml-auto">
+                                <span class="font-en text-3xl sm:text-4xl font-extrabold text-white tracking-tight">20</span>
+                                <span class="text-sm font-bold text-medical-500">年以上</span>
+                            </div>
+                        </div>
+
+                        <!-- 実績 02 -->
+                        <div class="py-5 md:py-6 md:px-8 flex items-center justify-between md:justify-start gap-5">
+                            <div>
+                                <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-gold-400 block">02 // PROVEN TRACK RECORD</span>
+                                <span class="text-xs sm:text-sm font-bold text-slate-300">OSSTEM臨床研究歯科医院・累計実績</span>
+                            </div>
+                            <div class="flex items-baseline gap-1 md:ml-auto">
+                                <span class="font-en text-3xl sm:text-4xl font-extrabold text-white tracking-tight">400</span>
+                                <span class="text-sm font-bold text-medical-500">症例以上</span>
+                            </div>
+                        </div>
+
+                        <!-- 実績 03 -->
+                        <div class="py-5 md:py-6 md:pl-8 flex items-center justify-between md:justify-start gap-5">
+                            <div>
+                                <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-gold-400 block">03 // SURGICAL GUIDE SYSTEM</span>
+                                <span class="text-xs sm:text-sm font-bold text-slate-300">3D-CT解析＆サージカルガイド使用率</span>
+                            </div>
+                            <div class="flex items-baseline gap-1 md:ml-auto">
+                                <span class="font-en text-3xl sm:text-4xl font-extrabold text-medical-500 tracking-tight">100</span>
+                                <span class="font-en text-lg font-extrabold text-white">%</span>
                             </div>
                         </div>
                     </div>
@@ -704,7 +760,7 @@
              4. TREATMENT COMPARISON (3つの治療法徹底比較)
              ========================================================= -->
         <section class="py-24 md:py-36 bg-surface border-b border-slate-200" id="comparison">
-            <div class="w-full max-w-[1760px] mx-auto px-4 md:px-12 lg:px-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal-up">
                     <div>
                         <p class="font-en text-xs font-extrabold tracking-[0.25em] text-medical-600 uppercase mb-3">TREATMENT COMPARISON</p>
@@ -712,13 +768,15 @@
                             インプラント・ブリッジ・入れ歯の比較
                         </h2>
                     </div>
-                    <p class="text-sm md:text-base text-slate-600 max-w-xl">
+                    <p class="text-sm text-slate-600 max-w-md">
                         残っているご自身の歯を1本でも多く守るために、3つの治療法の違いを客観的に比較します。
                     </p>
                 </div>
 
                 <!-- 3つの治療法 構造図解カード -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12 reveal-up">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 reveal-up">
+                    <!-- 1. インプラント -->
+                    <div class="bg-white border-2 border-navy-900 flex flex-col">
                         <div class="bg-navy-900 text-white px-6 py-4 flex justify-between items-center">
                             <h3 class="font-bold text-lg">インプラント</h3>
                             <span class="font-en text-[10px] font-extrabold tracking-widest bg-medical-600 px-2.5 py-1">RECOMMENDED</span>
@@ -1775,7 +1833,7 @@
              9. SPECIFICATIONS & PRICING (治療体制 ＆ 明瞭料金表)
              ========================================================= -->
         <section class="py-24 md:py-36 bg-surface border-t border-slate-200" id="specifications">
-            <div class="w-full max-w-[1760px] mx-auto px-4 md:px-12 lg:px-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal-up">
                     <div>
                         <p class="font-en text-xs font-extrabold tracking-[0.25em] text-medical-600 uppercase mb-3">SPECIFICATIONS &amp; PRICING</p>
@@ -1783,11 +1841,13 @@
                             治療体制・費用のご案内
                         </h2>
                     </div>
-                    <p class="text-sm md:text-base text-slate-600">デンタルローン・各種クレジットカード・医療費控除に対応しています。</p>
+                    <p class="text-sm text-slate-600">デンタルローン・各種クレジットカード・医療費控除に対応しています。</p>
                 </div>
 
                 <!-- 料金プラン 2カラム -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 reveal-up">
+                    <!-- 基本費用プラン -->
+                    <div class="bg-white border-2 border-navy-900 p-8 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-center mb-4">
                                 <span class="bg-navy-900 text-white text-xs font-bold px-3 py-1">基本費用プラン</span>
