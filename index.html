@@ -819,13 +819,13 @@
                     </p>
                 </div>
 
-                <!-- 3つの治療法 構造図解（※既存のイラスト形状は維持） -->
+                <!-- 3つの治療法 構造図解（※既存のイラスト形状は維持しつつ、インプラントの推奨度が際立つ明暗コントラストへ最適化） -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-14 reveal-up">
-                    <!-- 1. インプラント -->
-                    <div class="bg-white border-2 border-navy-950 flex flex-col shadow-sm">
-                        <div class="bg-navy-950 text-white px-6 py-4 flex justify-between items-center border-b border-champagne-400/30">
-                            <h3 class="font-bold text-lg">インプラント</h3>
-                            <span class="font-en text-[10px] font-bold tracking-[0.2em] bg-champagne-400 text-navy-950 px-2.5 py-1">RECOMMENDED</span>
+                    <!-- 1. インプラント（主役：重厚なダークネイビー × シャンパンゴールド） -->
+                    <div class="bg-white border-2 border-champagne-400 flex flex-col shadow-[0_20px_45px_-15px_rgba(11,23,38,0.22)] relative">
+                        <div class="bg-navy-950 text-white px-6 py-4 flex justify-between items-center border-b-2 border-champagne-400">
+                            <h3 class="font-bold text-lg text-white">インプラント</h3>
+                            <span class="font-en text-[10px] font-extrabold tracking-[0.2em] bg-champagne-400 text-navy-950 px-2.5 py-1">RECOMMENDED</span>
                         </div>
                         <div class="bg-[#0B1726] p-5 border-b border-slate-200 flex items-center justify-center h-48">
                             <svg viewBox="0 0 280 160" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="インプラント治療の構造イラスト">
@@ -841,27 +841,27 @@
                                 <text x="140" y="22" text-anchor="middle" fill="#D6BE96" font-size="10" font-weight="800">隣の歯を削らず自立</text>
                             </svg>
                         </div>
-                        <div class="p-6 flex-grow">
-                            <p class="text-sm text-slate-600 leading-[1.85]">
+                        <div class="p-6 flex-grow bg-champagne-50/35">
+                            <p class="text-sm text-navy-950 font-medium leading-[1.85]">
                                 顎の骨に人工歯根を埋め込むため、健康な隣の歯を削らずに済みます。天然歯に近い強い噛み心地と自然な見た目を回復できます。
                             </p>
                         </div>
                     </div>
 
-                    <!-- 2. ブリッジ -->
+                    <!-- 2. ブリッジ（比較対象：清潔感のある明るいライトトーン） -->
                     <div class="bg-white border border-slate-200 flex flex-col">
-                        <div class="bg-slate-700 text-white px-6 py-4 flex justify-between items-center">
+                        <div class="bg-[#E8E6DF] text-slate-700 px-6 py-4 flex justify-between items-center border-b border-slate-300">
                             <h3 class="font-bold text-lg">ブリッジ</h3>
-                            <span class="font-en text-[10px] font-bold tracking-[0.2em] text-slate-300">BRIDGE</span>
+                            <span class="font-en text-[10px] font-bold tracking-[0.2em] text-slate-500">BRIDGE</span>
                         </div>
-                        <div class="bg-slate-800 p-5 border-b border-slate-200 flex items-center justify-center h-48">
+                        <div class="bg-slate-100 p-5 border-b border-slate-200 flex items-center justify-center h-48">
                             <svg viewBox="0 0 280 160" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ブリッジ治療の構造イラスト">
-                                <path d="M10 105 H270 V155 H10 Z" fill="#1E293B"/>
-                                <path d="M10 88 H270 V105 H10 Z" fill="#334155"/>
-                                <path d="M44 55 L66 55 L70 88 L62 135 L48 135 L40 88 Z" fill="#94A3B8"/>
-                                <path d="M214 55 L236 55 L240 88 L232 135 L218 135 L210 88 Z" fill="#94A3B8"/>
-                                <path d="M35 45 C35 32, 75 32, 75 45 L120 45 C120 32, 160 32, 160 45 L205 45 C205 32, 245 32, 245 45 L242 86 L208 86 L205 55 L160 55 L156 86 L124 86 L120 55 L75 55 L72 86 L38 86 Z" fill="#CBD5E1" stroke="#F87171" stroke-width="1.5"/>
-                                <text x="140" y="22" text-anchor="middle" fill="#FCA5A5" font-size="10" font-weight="700">両隣の健康な歯を削って連結</text>
+                                <path d="M10 105 H270 V155 H10 Z" fill="#CBD5E1"/>
+                                <path d="M10 88 H270 V105 H10 Z" fill="#94A3B8"/>
+                                <path d="M44 55 L66 55 L70 88 L62 135 L48 135 L40 88 Z" fill="#64748B"/>
+                                <path d="M214 55 L236 55 L240 88 L232 135 L218 135 L210 88 Z" fill="#64748B"/>
+                                <path d="M35 45 C35 32, 75 32, 75 45 L120 45 C120 32, 160 32, 160 45 L205 45 C205 32, 245 32, 245 45 L242 86 L208 86 L205 55 L160 55 L156 86 L124 86 L120 55 L75 55 L72 86 L38 86 Z" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5"/>
+                                <text x="140" y="22" text-anchor="middle" fill="#B91C1C" font-size="10" font-weight="800">両隣の健康な歯を削って連結</text>
                             </svg>
                         </div>
                         <div class="p-6 flex-grow">
@@ -871,23 +871,23 @@
                         </div>
                     </div>
 
-                    <!-- 3. 入れ歯 -->
+                    <!-- 3. 入れ歯（比較対象：清潔感のある明るいライトトーン） -->
                     <div class="bg-white border border-slate-200 flex flex-col">
-                        <div class="bg-slate-600 text-white px-6 py-4 flex justify-between items-center">
+                        <div class="bg-[#E8E6DF] text-slate-700 px-6 py-4 flex justify-between items-center border-b border-slate-300">
                             <h3 class="font-bold text-lg">入れ歯（義歯）</h3>
-                            <span class="font-en text-[10px] font-bold tracking-[0.2em] text-slate-300">DENTURE</span>
+                            <span class="font-en text-[10px] font-bold tracking-[0.2em] text-slate-500">DENTURE</span>
                         </div>
-                        <div class="bg-slate-800 p-5 border-b border-slate-200 flex items-center justify-center h-48">
+                        <div class="bg-slate-100 p-5 border-b border-slate-200 flex items-center justify-center h-48">
                             <svg viewBox="0 0 280 160" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="部分入れ歯の構造イラスト">
-                                <path d="M10 105 H270 V155 H10 Z" fill="#1E293B"/>
-                                <path d="M10 88 H270 V105 H10 Z" fill="#334155"/>
-                                <path d="M35 45 C35 32, 75 32, 75 45 L70 88 L62 135 L48 135 L40 88 Z" fill="#E2E8F0"/>
-                                <path d="M205 45 C205 32, 245 32, 245 45 L240 88 L232 135 L218 135 L210 88 Z" fill="#E2E8F0"/>
-                                <path d="M84 74 H196 V90 H84 Z" fill="#F43F5E" fill-opacity="0.45" stroke="#FB7185" stroke-width="1.2"/>
-                                <path d="M122 46 C122 34, 158 34, 158 46 L154 74 H126 Z" fill="#CBD5E1"/>
-                                <path d="M84 78 H42 C36 78, 36 64, 44 64 H72" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M196 78 H238 C244 78, 244 64, 236 64 H208" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round"/>
-                                <text x="140" y="22" text-anchor="middle" fill="#FDE68A" font-size="10" font-weight="700">金属バネで固定・取り外し式</text>
+                                <path d="M10 105 H270 V155 H10 Z" fill="#CBD5E1"/>
+                                <path d="M10 88 H270 V105 H10 Z" fill="#94A3B8"/>
+                                <path d="M35 45 C35 32, 75 32, 75 45 L70 88 L62 135 L48 135 L40 88 Z" fill="#FFFFFF" stroke="#64748B" stroke-width="1.2"/>
+                                <path d="M205 45 C205 32, 245 32, 245 45 L240 88 L232 135 L218 135 L210 88 Z" fill="#FFFFFF" stroke="#64748B" stroke-width="1.2"/>
+                                <path d="M84 74 H196 V90 H84 Z" fill="#FDA4AF" fill-opacity="0.7" stroke="#E11D48" stroke-width="1.2"/>
+                                <path d="M122 46 C122 34, 158 34, 158 46 L154 74 H126 Z" fill="#FFFFFF" stroke="#64748B" stroke-width="1.2"/>
+                                <path d="M84 78 H42 C36 78, 36 64, 44 64 H72" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M196 78 H238 C244 78, 244 64, 236 64 H208" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+                                <text x="140" y="22" text-anchor="middle" fill="#B45309" font-size="10" font-weight="800">金属バネで固定・取り外し式</text>
                             </svg>
                         </div>
                         <div class="p-6 flex-grow">
@@ -905,11 +905,11 @@
                 <div class="overflow-x-auto bg-white border border-slate-200 reveal-up relative shadow-xs">
                     <table class="w-full text-left border-separate border-spacing-0 min-w-[720px]">
                         <thead>
-                            <tr class="bg-navy-950 text-white text-xs tracking-widest">
-                                <th class="sticky md:static left-0 z-20 bg-navy-950 p-4 font-bold w-[112px] sm:w-1/4 min-w-[112px] border-r border-white/15 shadow-[4px_0_8px_-2px_rgba(0,0,0,0.25)] md:shadow-none">比較項目</th>
-                                <th class="p-4 font-bold w-1/4 text-center bg-navy-800 text-champagne-300 border-b-2 border-champagne-400">インプラント</th>
-                                <th class="p-4 font-bold w-1/4 text-center border-l border-white/10">ブリッジ</th>
-                                <th class="p-4 font-bold w-1/4 text-center border-l border-white/10">入れ歯</th>
+                            <tr class="text-xs tracking-widest">
+                                <th class="sticky md:static left-0 z-20 bg-slate-200 text-navy-950 p-4 font-bold w-[112px] sm:w-1/4 min-w-[112px] border-b border-r border-slate-300 shadow-[4px_0_8px_-2px_rgba(0,0,0,0.12)] md:shadow-none">比較項目</th>
+                                <th class="p-4 font-bold w-1/4 text-center bg-navy-950 text-champagne-300 border-t-4 border-t-champagne-400 border-b-2 border-b-champagne-400">インプラント</th>
+                                <th class="p-4 font-bold w-1/4 text-center bg-[#E8E6DF] text-slate-700 border-b border-l border-slate-300">ブリッジ</th>
+                                <th class="p-4 font-bold w-1/4 text-center bg-[#E8E6DF] text-slate-700 border-b border-l border-slate-300">入れ歯</th>
                             </tr>
                         </thead>
                         <tbody class="text-sm">
