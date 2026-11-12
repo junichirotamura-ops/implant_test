@@ -61,6 +61,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
+        /* スマホでの横スクロール・右端余白の完全防止 */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
+        }
+
         /* Analog Grain Texture Overlay */
         .grain-overlay {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
@@ -108,11 +115,13 @@
 
         /* SP Menu Drawer */
         #sp-menu {
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
             transform: translateX(100%);
+            visibility: hidden;
         }
         #sp-menu.open {
             transform: translateX(0);
+            visibility: visible;
         }
 
         /* 診療時間表 */
@@ -249,7 +258,7 @@
     }
     </script>
 </head>
-<body class="font-sans text-slate-800 bg-white leading-relaxed antialiased pb-16 md:pb-0 selection:bg-navy-900 selection:text-white">
+<body class="font-sans text-slate-800 bg-white leading-relaxed antialiased pb-16 md:pb-0 overflow-x-hidden w-full selection:bg-navy-900 selection:text-white">
 
     <!-- Subtle Analog Grain Overlay -->
     <div class="grain-overlay pointer-events-none fixed inset-0 z-50"></div>
@@ -371,52 +380,52 @@
                 </ul>
             </nav>
         </div>
-
-        <!-- スマホ用メニュー (Drawer) -->
-        <div id="sp-menu" class="fixed inset-y-0 right-0 w-80 bg-navy-950 text-white shadow-2xl z-[60] flex flex-col md:hidden overflow-y-auto">
-            <div class="flex justify-between items-center p-5 border-b border-white/10">
-                <span class="font-en text-xs tracking-widest text-gold-400">MENU</span>
-                <button id="close-menu-btn" class="p-1 text-slate-400 hover:text-white focus:outline-none">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <nav class="flex-grow pb-24 text-sm">
-                <ul class="font-bold">
-                    <li><a href="https://www.nakamura-sika.net/" class="block px-6 py-4 border-b border-white/10">HOME</a></li>
-                    <li><a href="#cases-and-links" class="block px-6 py-4 border-b border-white/10 text-gold-400">Before &amp; After 症例一覧</a></li>
-                    <li><a href="#doctors-philosophy" class="block px-6 py-4 border-b border-white/10">当院の思い</a></li>
-                    <li><a href="#specifications" class="block px-6 py-4 border-b border-white/10">治療費用・体制</a></li>
-                    <li>
-                        <div class="px-6 py-3 bg-navy-900 text-slate-400 text-xs tracking-wider">診療内容</div>
-                        <ul class="text-xs font-medium text-slate-300">
-                            <li><a href="https://www.nakamura-sika.net/dental/implant.php" class="block px-8 py-3 border-b border-white/5 text-medical-500 font-bold">インプラント</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/general.php" class="block px-8 py-3 border-b border-white/5">むし歯</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/preventive.php" class="block px-8 py-3 border-b border-white/5">予防歯科</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/esthetic.php" class="block px-8 py-3 border-b border-white/5">審美歯科（メタルフリー）</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/bridge.php" class="block px-8 py-3 border-b border-white/5">ブリッジ治療</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/denture.php" class="block px-8 py-3 border-b border-white/5">入れ歯治療</a></li>
-                            <li><a href="https://www.nakamura-sika.net/lp_invisalign/" class="block px-8 py-3 border-b border-white/5">インビザライン</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/orthodontic.php" class="block px-8 py-3 border-b border-white/5">矯正治療</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/whitening.php" class="block px-8 py-3 border-b border-white/5">ホワイトニング</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/kids.php" class="block px-8 py-3 border-b border-white/5">小児歯科</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/preortho.php" class="block px-8 py-3 border-b border-white/5">プレオルソこども矯正</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/maternity.php" class="block px-8 py-3 border-b border-white/5">マタニティ歯科</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/surgery.php" class="block px-8 py-3 border-b border-white/5">口腔外科</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/price.php" class="block px-8 py-3 border-b border-white/5">治療費用</a></li>
-                            <li><a href="https://www.nakamura-sika.net/dental/housecall.php" class="block px-8 py-3 border-b border-white/5">訪問歯科診療</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://www.nakamura-sika.net/staff/" class="block px-6 py-4 border-b border-white/10">院長・スタッフ紹介</a></li>
-                    <li><a href="https://www.nakamura-sika.net/first.php" class="block px-6 py-4 border-b border-white/10">初めてお越しの方へ</a></li>
-                    <li><a href="https://www.nakamura-sika.net/clinic.php" class="block px-6 py-4 border-b border-white/10">クリニック紹介・CT</a></li>
-                    <li><a href="https://www.nakamura-sika.net/access.php" class="block px-6 py-4 border-b border-white/10">地図・駐車場</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div id="sp-menu-overlay" class="fixed inset-0 bg-navy-950/70 backdrop-blur-xs z-[55] hidden md:hidden"></div>
     </header>
 
-    <main>
+    <!-- スマホ用メニュー (Drawer) ※backdrop-blurの影響を受けないようheader外に配置 -->
+    <div id="sp-menu" class="fixed inset-y-0 right-0 w-72 max-w-[85vw] bg-navy-950 text-white shadow-2xl z-[60] flex flex-col md:hidden overflow-y-auto">
+        <div class="flex justify-between items-center p-5 border-b border-white/10">
+            <span class="font-en text-xs tracking-widest text-gold-400">MENU</span>
+            <button id="close-menu-btn" class="p-1 text-slate-400 hover:text-white focus:outline-none" aria-label="メニューを閉じる">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex-grow pb-24 text-sm">
+            <ul class="font-bold">
+                <li><a href="https://www.nakamura-sika.net/" class="block px-6 py-4 border-b border-white/10">HOME</a></li>
+                <li><a href="#cases-and-links" class="sp-menu-link block px-6 py-4 border-b border-white/10 text-gold-400">Before &amp; After 症例一覧</a></li>
+                <li><a href="#doctors-philosophy" class="sp-menu-link block px-6 py-4 border-b border-white/10">当院の思い</a></li>
+                <li><a href="#specifications" class="sp-menu-link block px-6 py-4 border-b border-white/10">治療費用・体制</a></li>
+                <li>
+                    <div class="px-6 py-3 bg-navy-900 text-slate-400 text-xs tracking-wider">診療内容</div>
+                    <ul class="text-xs font-medium text-slate-300">
+                        <li><a href="https://www.nakamura-sika.net/dental/implant.php" class="block px-8 py-3 border-b border-white/5 text-medical-500 font-bold">インプラント</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/general.php" class="block px-8 py-3 border-b border-white/5">むし歯</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/preventive.php" class="block px-8 py-3 border-b border-white/5">予防歯科</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/esthetic.php" class="block px-8 py-3 border-b border-white/5">審美歯科（メタルフリー）</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/bridge.php" class="block px-8 py-3 border-b border-white/5">ブリッジ治療</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/denture.php" class="block px-8 py-3 border-b border-white/5">入れ歯治療</a></li>
+                        <li><a href="https://www.nakamura-sika.net/lp_invisalign/" class="block px-8 py-3 border-b border-white/5">インビザライン</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/orthodontic.php" class="block px-8 py-3 border-b border-white/5">矯正治療</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/whitening.php" class="block px-8 py-3 border-b border-white/5">ホワイトニング</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/kids.php" class="block px-8 py-3 border-b border-white/5">小児歯科</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/preortho.php" class="block px-8 py-3 border-b border-white/5">プレオルソこども矯正</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/maternity.php" class="block px-8 py-3 border-b border-white/5">マタニティ歯科</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/surgery.php" class="block px-8 py-3 border-b border-white/5">口腔外科</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/price.php" class="block px-8 py-3 border-b border-white/5">治療費用</a></li>
+                        <li><a href="https://www.nakamura-sika.net/dental/housecall.php" class="block px-8 py-3 border-b border-white/5">訪問歯科診療</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://www.nakamura-sika.net/staff/" class="block px-6 py-4 border-b border-white/10">院長・スタッフ紹介</a></li>
+                <li><a href="https://www.nakamura-sika.net/first.php" class="block px-6 py-4 border-b border-white/10">初めてお越しの方へ</a></li>
+                <li><a href="https://www.nakamura-sika.net/clinic.php" class="block px-6 py-4 border-b border-white/10">クリニック紹介・CT</a></li>
+                <li><a href="https://www.nakamura-sika.net/access.php" class="block px-6 py-4 border-b border-white/10">地図・駐車場</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="sp-menu-overlay" class="fixed inset-0 bg-navy-950/70 backdrop-blur-xs z-[55] hidden md:hidden"></div>
+
+    <main class="overflow-x-hidden w-full">
         <!-- =========================================================
              1. HERO / FIRST VIEW (フルスクリーン・シネマティック型)
              ========================================================= -->
@@ -438,9 +447,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                     
                     <!-- 左カラム（7）：圧倒的タイポグラフィ ＆ 削ぎ落としたCTA -->
-                    <div class="lg:col-span-7 space-y-7 md:space-y-9">
-                        <div class="hero-reveal inline-flex items-center gap-3 border-l-2 border-medical-500 bg-navy-950/80 backdrop-blur-xs pl-3.5 pr-4 py-1.5">
-                            <span class="font-en text-[11px] font-extrabold tracking-[0.2em] text-gold-400 uppercase">FUKUYAMA IMPLANT CENTER</span>
+                    <div class="lg:col-span-7 space-y-7 md:space-y-9 min-w-0">
+                        <div class="hero-reveal inline-flex flex-wrap items-center gap-2 sm:gap-3 border-l-2 border-medical-500 bg-navy-950/80 backdrop-blur-xs pl-3.5 pr-4 py-1.5 max-w-full">
+                            <span class="font-en text-[10px] sm:text-[11px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] text-gold-400 uppercase">FUKUYAMA IMPLANT CENTER</span>
                             <span class="text-white/30">|</span>
                             <span class="text-xs font-bold tracking-wider text-slate-200">福山市・骨造成／難症例対応</span>
                         </div>
@@ -448,7 +457,7 @@
                         <h1 class="hero-reveal font-mincho text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold leading-[1.12] tracking-tight text-white drop-shadow-sm">
                             土台から創る、<br>
                             一生涯を見据えた<br>
-                            <span class="text-medical-500">精密インプラント。</span>
+                            <span class="text-medical-500">精密インプラント</span>
                         </h1>
 
                         <p class="hero-reveal text-sm sm:text-base md:text-lg text-slate-200 font-medium max-w-xl leading-relaxed">
@@ -470,12 +479,12 @@
                     </div>
 
                     <!-- 右カラム（5）：大判ビジュアル（高倍率ルーペ装着・精密処置シーン：images/2.JPG） -->
-                    <div class="lg:col-span-5 hero-reveal">
+                    <div class="lg:col-span-5 hero-reveal min-w-0">
                         <div class="relative bg-navy-950 border border-white/25 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden group">
                             <!-- コーナーの建築的アクセントライン -->
                             <div class="absolute top-0 left-0 w-10 h-1 bg-medical-500 z-20"></div>
-                            <div class="absolute top-0 right-0 bg-navy-950/85 backdrop-blur-md px-3.5 py-1.5 border-b border-l border-white/15 z-20">
-                                <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-gold-400">OSSTEM CLINICAL RESEARCH CLINIC</span>
+                            <div class="absolute top-0 right-0 bg-navy-950/85 backdrop-blur-md px-3 py-1.5 border-b border-l border-white/15 z-20 max-w-full">
+                                <span class="font-en text-[9px] sm:text-[10px] font-extrabold tracking-[0.12em] sm:tracking-[0.2em] text-gold-400 block truncate">OSSTEM CLINICAL RESEARCH CLINIC</span>
                             </div>
 
                             <!-- 院長アップ写真（4:3〜5:4の横幅を活かした迫力構図） -->
@@ -487,12 +496,12 @@
                                 <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/15 to-transparent"></div>
                                 
                                 <!-- 写真下部のミニマル・キャプション -->
-                                <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex items-end justify-between gap-4">
+                                <div class="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-wrap items-end justify-between gap-2 sm:gap-4">
                                     <div>
-                                        <p class="font-en text-[10px] font-bold tracking-[0.25em] text-medical-500 uppercase mb-1">PRECISION &amp; SAFETY</p>
-                                        <p class="text-sm sm:text-base font-bold text-white leading-snug">拡大視野 × 3D-CT解析 × ダブルチェック体制</p>
+                                        <p class="font-en text-[10px] font-bold tracking-[0.2em] text-medical-500 uppercase mb-1">PRECISION &amp; SAFETY</p>
+                                        <p class="text-xs sm:text-base font-bold text-white leading-snug">拡大視野 × 3D-CT解析 × ダブルチェック体制</p>
                                     </div>
-                                    <span class="shrink-0 font-en text-[11px] font-extrabold text-white border border-white/30 bg-navy-900/80 px-3 py-1">
+                                    <span class="shrink-0 font-en text-[10px] sm:text-[11px] font-extrabold text-white border border-white/30 bg-navy-900/80 px-2.5 py-1">
                                         DIRECTED BY DR. NAKAMURA
                                     </span>
                                 </div>
@@ -671,79 +680,79 @@
                         </div>
 
                         <div class="flex-grow flex items-center justify-center py-2">
-                            <svg viewBox="0 0 500 440" class="w-full max-w-[600px] h-auto" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="インプラント3層精密構造図解（クラウン・アバットメント・フィクスチャー）">
+                            <svg viewBox="0 0 560 440" class="w-full max-w-[640px] h-auto" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="インプラント3層精密構造図解（クラウン・アバットメント・フィクスチャー）">
                                 <!-- 背景設計グリッド線 -->
                                 <g stroke="#284B78" stroke-width="0.6" opacity="0.6">
-                                    <line x1="20" y1="60" x2="480" y2="60"/>
-                                    <line x1="20" y1="150" x2="480" y2="150"/>
-                                    <line x1="20" y1="240" x2="480" y2="240"/>
-                                    <line x1="20" y1="330" x2="480" y2="330"/>
-                                    <line x1="230" y1="20" x2="230" y2="420" stroke-dasharray="4 4"/>
+                                    <line x1="15" y1="60" x2="545" y2="60"/>
+                                    <line x1="15" y1="150" x2="545" y2="150"/>
+                                    <line x1="15" y1="240" x2="545" y2="240"/>
+                                    <line x1="15" y1="330" x2="545" y2="330"/>
+                                    <line x1="185" y1="20" x2="185" y2="420" stroke-dasharray="4 4"/>
                                 </g>
 
                                 <!-- 顎骨（Alveolar Bone）断面 -->
-                                <path d="M40 245 Q135 232 230 238 Q325 232 420 245 L420 415 L40 415 Z" fill="#1E3A5F" stroke="#E88343" stroke-width="1.2" stroke-opacity="0.55"/>
+                                <path d="M20 245 Q102 232 185 238 Q268 232 325 245 L325 415 L20 415 Z" fill="#1E3A5F" stroke="#E88343" stroke-width="1.2" stroke-opacity="0.55"/>
                                 <!-- 海綿骨テクスチャドット -->
                                 <g fill="#E88343" opacity="0.3">
-                                    <circle cx="85" cy="290" r="2"/><circle cx="115" cy="315" r="2.5"/><circle cx="95" cy="350" r="2"/>
-                                    <circle cx="145" cy="285" r="2"/><circle cx="155" cy="335" r="2"/><circle cx="130" cy="375" r="2.5"/>
-                                    <circle cx="310" cy="285" r="2"/><circle cx="345" cy="310" r="2.5"/><circle cx="325" cy="355" r="2"/>
-                                    <circle cx="375" cy="295" r="2"/><circle cx="365" cy="345" r="2"/><circle cx="340" cy="380" r="2.5"/>
+                                    <circle cx="55" cy="290" r="2"/><circle cx="85" cy="315" r="2.5"/><circle cx="65" cy="350" r="2"/>
+                                    <circle cx="110" cy="285" r="2"/><circle cx="120" cy="335" r="2"/><circle cx="95" cy="375" r="2.5"/>
+                                    <circle cx="245" cy="285" r="2"/><circle cx="275" cy="310" r="2.5"/><circle cx="255" cy="355" r="2"/>
+                                    <circle cx="300" cy="295" r="2"/><circle cx="290" cy="345" r="2"/><circle cx="270" cy="380" r="2.5"/>
                                 </g>
 
                                 <!-- 歯肉（Gingiva）レイヤー -->
-                                <path d="M40 205 Q135 190 198 202 L198 238 Q135 232 40 245 Z" fill="#284B78" stroke="#CBD5E1" stroke-width="1"/>
-                                <path d="M262 202 Q325 190 420 205 L420 245 Q325 232 262 238 Z" fill="#284B78" stroke="#CBD5E1" stroke-width="1"/>
+                                <path d="M20 205 Q102 190 153 202 L153 238 Q102 232 20 245 Z" fill="#284B78" stroke="#CBD5E1" stroke-width="1"/>
+                                <path d="M217 202 Q268 190 325 205 L325 245 Q268 232 217 238 Z" fill="#284B78" stroke="#CBD5E1" stroke-width="1"/>
 
                                 <!-- 左の隣接天然歯（カットモデル） -->
-                                <path d="M72 135 C72 108, 145 108, 145 135 L138 205 L125 320 L112 320 L106 235 L100 320 L87 320 L78 205 Z" fill="#132640" stroke="#94A3B8" stroke-width="1.5"/>
-                                <text x="108" y="168" text-anchor="middle" fill="#CBD5E1" font-size="10" font-weight="700">天然歯</text>
+                                <path d="M42 135 C42 108, 108 108, 108 135 L102 205 L90 320 L78 320 L75 235 L72 320 L60 320 L48 205 Z" fill="#132640" stroke="#94A3B8" stroke-width="1.5"/>
+                                <text x="75" y="168" text-anchor="middle" fill="#CBD5E1" font-size="10" font-weight="700">天然歯</text>
 
                                 <!-- 右の隣接天然歯（カットモデル） -->
-                                <path d="M315 135 C315 108, 388 108, 388 135 L380 205 L368 320 L355 320 L349 235 L343 320 L330 320 L322 205 Z" fill="#132640" stroke="#94A3B8" stroke-width="1.5"/>
-                                <text x="352" y="168" text-anchor="middle" fill="#CBD5E1" font-size="10" font-weight="700">天然歯</text>
+                                <path d="M258 135 C258 108, 318 108, 318 135 L312 205 L302 320 L291 320 L288 235 L285 320 L274 320 L264 205 Z" fill="#132640" stroke="#94A3B8" stroke-width="1.5"/>
+                                <text x="288" y="168" text-anchor="middle" fill="#CBD5E1" font-size="10" font-weight="700">天然歯</text>
 
                                 <!-- 03: フィクスチャー（チタン製インプラント体・ネジ構造） -->
                                 <g>
-                                    <path d="M204 222 H256 L252 355 C252 366, 208 366, 208 355 Z" fill="#D96B27" fill-opacity="0.28" stroke="#E88343" stroke-width="2"/>
+                                    <path d="M159 222 H211 L207 355 C207 366, 163 366, 163 355 Z" fill="#D96B27" fill-opacity="0.28" stroke="#E88343" stroke-width="2"/>
                                     <!-- スレッド（ネジ山）精密ライン -->
-                                    <line x1="201" y1="242" x2="259" y2="246" stroke="#F4A261" stroke-width="2.2"/>
-                                    <line x1="201" y1="260" x2="259" y2="264" stroke="#F4A261" stroke-width="2.2"/>
-                                    <line x1="202" y1="278" x2="258" y2="282" stroke="#F4A261" stroke-width="2.2"/>
-                                    <line x1="203" y1="296" x2="257" y2="300" stroke="#F4A261" stroke-width="2.2"/>
-                                    <line x1="204" y1="314" x2="256" y2="318" stroke="#F4A261" stroke-width="2.2"/>
-                                    <line x1="205" y1="332" x2="255" y2="336" stroke="#F4A261" stroke-width="2.2"/>
+                                    <line x1="156" y1="242" x2="214" y2="246" stroke="#F4A261" stroke-width="2.2"/>
+                                    <line x1="156" y1="260" x2="214" y2="264" stroke="#F4A261" stroke-width="2.2"/>
+                                    <line x1="157" y1="278" x2="213" y2="282" stroke="#F4A261" stroke-width="2.2"/>
+                                    <line x1="158" y1="296" x2="212" y2="300" stroke="#F4A261" stroke-width="2.2"/>
+                                    <line x1="159" y1="314" x2="211" y2="318" stroke="#F4A261" stroke-width="2.2"/>
+                                    <line x1="160" y1="332" x2="210" y2="336" stroke="#F4A261" stroke-width="2.2"/>
                                 </g>
 
                                 <!-- 02: アバットメント（連結支台） -->
-                                <path d="M212 162 L248 162 L254 222 L206 222 Z" fill="#C87D28" fill-opacity="0.35" stroke="#E5A95C" stroke-width="2"/>
-                                <rect x="223" y="172" width="14" height="44" stroke="#E5A95C" stroke-width="1" stroke-dasharray="2 2"/>
+                                <path d="M167 162 L203 162 L209 222 L161 222 Z" fill="#C87D28" fill-opacity="0.35" stroke="#E5A95C" stroke-width="2"/>
+                                <rect x="178" y="172" width="14" height="44" stroke="#E5A95C" stroke-width="1" stroke-dasharray="2 2"/>
 
                                 <!-- 01: クラウン（セラミック人工歯） -->
-                                <path d="M188 102 C188 76, 214 72, 230 80 C246 72, 272 76, 272 102 L264 162 L196 162 Z" fill="#FFFFFF" fill-opacity="0.96" stroke="#D96B27" stroke-width="2.2"/>
+                                <path d="M143 102 C143 76, 169 72, 185 80 C201 72, 227 76, 227 102 L219 162 L151 162 Z" fill="#FFFFFF" fill-opacity="0.96" stroke="#D96B27" stroke-width="2.2"/>
                                 <!-- 咬合面の陰影ライン -->
-                                <path d="M204 94 Q230 104 256 94" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M159 94 Q185 104 211 94" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
 
-                                <!-- 引き出し線 ＆ ラベル 01 -->
-                                <polyline points="270,112 315,74 475,74" stroke="#FFFFFF" stroke-width="1.2"/>
-                                <circle cx="270" cy="112" r="3.5" fill="#D96B27" stroke="#FFFFFF" stroke-width="1.5"/>
-                                <text x="322" y="66" fill="#F4A261" font-size="10" font-weight="800">01 // CROWN</text>
-                                <text x="322" y="88" fill="#FFFFFF" font-size="12" font-weight="700">クラウン（人工歯）</text>
+                                <!-- 引き出し線 ＆ ラベル 01（イラストと完全に分離した右余白へ配置） -->
+                                <polyline points="225,112 265,78 545,78" stroke="#FFFFFF" stroke-width="1.2"/>
+                                <circle cx="225" cy="112" r="3.5" fill="#D96B27" stroke="#FFFFFF" stroke-width="1.5"/>
+                                <text x="348" y="70" fill="#F4A261" font-size="11" font-weight="800">01 // CROWN</text>
+                                <text x="348" y="96" fill="#FFFFFF" font-size="13" font-weight="700">クラウン（人工歯）</text>
 
-                                <!-- 引き出し線 ＆ ラベル 02 -->
-                                <polyline points="252,190 315,190 475,190" stroke="#E5A95C" stroke-width="1.2"/>
-                                <circle cx="252" cy="190" r="3.5" fill="#C87D28" stroke="#FFFFFF" stroke-width="1.5"/>
-                                <text x="322" y="182" fill="#E5A95C" font-size="10" font-weight="800">02 // ABUTMENT</text>
-                                <text x="322" y="204" fill="#FFFFFF" font-size="12" font-weight="700">アバットメント</text>
+                                <!-- 引き出し線 ＆ ラベル 02（イラストと完全に分離した右余白へ配置） -->
+                                <polyline points="207,190 340,190 545,190" stroke="#E5A95C" stroke-width="1.2"/>
+                                <circle cx="207" cy="190" r="3.5" fill="#C87D28" stroke="#FFFFFF" stroke-width="1.5"/>
+                                <text x="348" y="182" fill="#E5A95C" font-size="11" font-weight="800">02 // ABUTMENT</text>
+                                <text x="348" y="208" fill="#FFFFFF" font-size="13" font-weight="700">アバットメント</text>
 
-                                <!-- 引き出し線 ＆ ラベル 03 -->
-                                <polyline points="256,302 315,302 475,302" stroke="#E88343" stroke-width="1.2"/>
-                                <circle cx="256" cy="302" r="3.5" fill="#D96B27" stroke="#FFFFFF" stroke-width="1.5"/>
-                                <text x="322" y="294" fill="#F4A261" font-size="10" font-weight="800">03 // FIXTURE</text>
-                                <text x="322" y="316" fill="#FFFFFF" font-size="12" font-weight="700">フィクスチャー（人工歯根）</text>
+                                <!-- 引き出し線 ＆ ラベル 03（イラストと完全に分離した右余白へ配置） -->
+                                <polyline points="211,302 340,302 545,302" stroke="#E88343" stroke-width="1.2"/>
+                                <circle cx="211" cy="302" r="3.5" fill="#D96B27" stroke="#FFFFFF" stroke-width="1.5"/>
+                                <text x="348" y="294" fill="#F4A261" font-size="11" font-weight="800">03 // FIXTURE</text>
+                                <text x="348" y="320" fill="#FFFFFF" font-size="13" font-weight="700">フィクスチャー（人工歯根）</text>
 
                                 <!-- 下部注釈 -->
-                                <text x="60" y="398" fill="#CBD5E1" font-size="10" font-weight="700">顎骨（Alveolar Bone）</text>
+                                <text x="38" y="398" fill="#CBD5E1" font-size="10" font-weight="700">顎骨（Alveolar Bone）</text>
                             </svg>
                         </div>
 
@@ -860,84 +869,84 @@
                                 外科手術が不要な取り外し式義歯です。金属のバネによる見た目の問題や装着時の違和感、噛む力の低下が生じやすい傾向があります。
                             </p>
                         </div>
-                    </div>
+                <!-- 比較マトリクス表（スマホ横スクロール時に左端「比較項目」を固定） -->
+                <div class="md:hidden text-right mb-2 reveal-up">
+                    <span class="inline-block text-[11px] font-bold text-navy-900 bg-white border border-slate-200 px-3 py-1">← 横にスクロールして比較できます →</span>
                 </div>
-
-                <!-- 比較マトリクス表 -->
-                <div class="overflow-x-auto bg-white border border-slate-200 reveal-up">
-                    <table class="w-full text-left border-collapse min-w-[720px]">
+                <div class="overflow-x-auto bg-white border border-slate-200 reveal-up relative">
+                    <table class="w-full text-left border-separate border-spacing-0 min-w-[720px]">
                         <thead>
                             <tr class="bg-navy-900 text-white text-xs tracking-wider">
-                                <th class="p-4 font-bold w-1/4">比較項目</th>
+                                <th class="sticky left-0 z-20 bg-navy-900 p-3.5 sm:p-4 font-bold w-[112px] sm:w-1/4 min-w-[112px] border-r border-white/20 shadow-[4px_0_8px_-2px_rgba(0,0,0,0.25)]">比較項目</th>
                                 <th class="p-4 font-bold w-1/4 text-center bg-medical-600">インプラント</th>
                                 <th class="p-4 font-bold w-1/4 text-center border-l border-white/10">ブリッジ</th>
                                 <th class="p-4 font-bold w-1/4 text-center border-l border-white/10">入れ歯</th>
                             </tr>
                         </thead>
                         <tbody class="text-sm">
-                            <tr class="border-b border-slate-200">
-                                <th class="p-4 font-bold text-navy-900 bg-slate-50">噛み心地・噛む力</th>
-                                <td class="p-4 border-l border-slate-200 bg-medical-50/40">
+                            <tr>
+                                <th class="sticky left-0 z-10 bg-slate-50 p-3.5 sm:p-4 font-bold text-navy-900 text-xs sm:text-sm border-b border-r border-slate-200 shadow-[4px_0_8px_-2px_rgba(30,58,95,0.08)]">噛み心地・噛む力</th>
+                                <td class="p-4 border-b border-slate-200 bg-medical-50/40">
                                     <span class="font-bold text-medical-600 block mb-1">◎ 天然歯とほぼ同等</span>
                                     <span class="text-xs text-slate-600">独立して支えるため硬い物もしっかり噛める。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-navy-900 block mb-1">〇 天然歯の約7〜8割</span>
                                     <span class="text-xs text-slate-600">固定式だが支えの歯に負担がかかる。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-slate-500 block mb-1">△ 天然歯の約2〜5割</span>
                                     <span class="text-xs text-slate-600">粘膜で支えるため噛む力が弱くなりやすい。</span>
                                 </td>
                             </tr>
-                            <tr class="border-b border-slate-200">
-                                <th class="p-4 font-bold text-navy-900 bg-slate-50">周囲の歯への負担</th>
-                                <td class="p-4 border-l border-slate-200 bg-medical-50/40">
+                            <tr>
+                                <th class="sticky left-0 z-10 bg-slate-50 p-3.5 sm:p-4 font-bold text-navy-900 text-xs sm:text-sm border-b border-r border-slate-200 shadow-[4px_0_8px_-2px_rgba(30,58,95,0.08)]">周囲の歯への負担</th>
+                                <td class="p-4 border-b border-slate-200 bg-medical-50/40">
                                     <span class="font-bold text-medical-600 block mb-1">◎ 負担なし</span>
                                     <span class="text-xs text-slate-600">健康な両隣の歯を一切削らずに済む。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-red-600 block mb-1">× 負担が大きい</span>
                                     <span class="text-xs text-slate-600">両隣の健康な歯を大きく削り寿命を縮めるリスク。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-slate-500 block mb-1">△ やや負担あり</span>
                                     <span class="text-xs text-slate-600">バネをかける歯に揺さぶる力がかかる。</span>
                                 </td>
                             </tr>
-                            <tr class="border-b border-slate-200">
-                                <th class="p-4 font-bold text-navy-900 bg-slate-50">外科手術の有無</th>
-                                <td class="p-4 border-l border-slate-200 bg-medical-50/40">
+                            <tr>
+                                <th class="sticky left-0 z-10 bg-slate-50 p-3.5 sm:p-4 font-bold text-navy-900 text-xs sm:text-sm border-b border-r border-slate-200 shadow-[4px_0_8px_-2px_rgba(30,58,95,0.08)]">外科手術の有無</th>
+                                <td class="p-4 border-b border-slate-200 bg-medical-50/40">
                                     <span class="font-bold text-navy-900 block mb-1">△ 必要（低侵襲対応）</span>
                                     <span class="text-xs text-slate-600">サージカルガイド・静脈内鎮静法で負担軽減。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-navy-900 block mb-1">〇 不要</span>
                                     <span class="text-xs text-slate-600">手術は不要だが歯を削る処置が必要。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-navy-900 block mb-1">〇 不要</span>
                                     <span class="text-xs text-slate-600">型取り中心で外科処置は不要。</span>
                                 </td>
                             </tr>
-                            <tr class="border-b border-slate-200">
-                                <th class="p-4 font-bold text-navy-900 bg-slate-50">審美性（見た目）</th>
-                                <td class="p-4 border-l border-slate-200 bg-medical-50/40">
+                            <tr>
+                                <th class="sticky left-0 z-10 bg-slate-50 p-3.5 sm:p-4 font-bold text-navy-900 text-xs sm:text-sm border-b border-r border-slate-200 shadow-[4px_0_8px_-2px_rgba(30,58,95,0.08)]">審美性（見た目）</th>
+                                <td class="p-4 border-b border-slate-200 bg-medical-50/40">
                                     <span class="font-bold text-medical-600 block mb-1">◎ 非常に自然</span>
                                     <span class="text-xs text-slate-600">天然歯と変わらない白さと歯ぐきのライン。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-navy-900 block mb-1">〇 素材による</span>
                                     <span class="text-xs text-slate-600">保険適用部位は銀歯になる場合がある。</span>
                                 </td>
-                                <td class="p-4 border-l border-slate-200">
+                                <td class="p-4 border-b border-l border-slate-200">
                                     <span class="font-bold text-slate-500 block mb-1">△ 金属バネが見える</span>
                                     <span class="text-xs text-slate-600">口を開けた際に金具が見えることがある。</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="p-4 font-bold text-navy-900 bg-slate-50">お手入れ方法</th>
-                                <td class="p-4 border-l border-slate-200 bg-medical-50/40">
+                                <th class="sticky left-0 z-10 bg-slate-50 p-3.5 sm:p-4 font-bold text-navy-900 text-xs sm:text-sm border-r border-slate-200 shadow-[4px_0_8px_-2px_rgba(30,58,95,0.08)]">お手入れ方法</th>
+                                <td class="p-4 bg-medical-50/40">
                                     <span class="font-bold text-medical-600 block mb-1">〇 天然歯と同じ</span>
                                     <span class="text-xs text-slate-600">通常の歯磨き＋定期メンテナンス。</span>
                                 </td>
@@ -1600,16 +1609,16 @@
 
                 <!-- 症例一覧＆公式Instagramリンク -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 reveal-up">
-                    <a href="https://www.nakamura-sika.net/implant-case/" class="bg-navy-900 hover:bg-navy-800 text-white p-6 sm:p-8 flex items-center justify-between transition-colors">
+                    <a href="https://www.nakamura-sika.net/implant-case/" class="bg-navy-900 hover:bg-navy-800 text-white p-6 sm:p-8 flex items-center justify-between transition-colors shadow-md">
                         <div>
                             <span class="font-en text-xs font-extrabold tracking-widest text-gold-400 block mb-1">ALL CASE ARCHIVES</span>
                             <span class="text-lg font-bold">年齢・本数・部位から全症例を検索する</span>
                         </div>
                         <span class="font-en text-2xl">→</span>
                     </a>
-                    <a href="https://www.instagram.com/nakamura_dentalclinic_implant/" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-slate-50 text-navy-900 border-2 border-navy-900 p-6 sm:p-8 flex items-center justify-between transition-colors">
+                    <a href="https://www.instagram.com/nakamura_dentalclinic_implant/" target="_blank" rel="noopener noreferrer" class="bg-medical-600 hover:bg-medical-700 text-white p-6 sm:p-8 flex items-center justify-between transition-colors shadow-md">
                         <div>
-                            <span class="font-en text-xs font-extrabold tracking-widest text-medical-600 block mb-1">OFFICIAL INSTAGRAM</span>
+                            <span class="font-en text-xs font-extrabold tracking-widest text-medical-100 block mb-1">OFFICIAL INSTAGRAM</span>
                             <span class="text-lg font-bold">公式Instagramで最新症例を見る</span>
                         </div>
                         <span class="font-en text-2xl">→</span>
@@ -1627,7 +1636,8 @@
                     <div>
                         <p class="font-en text-xs font-extrabold tracking-[0.25em] text-medical-600 uppercase mb-3">CONNECTED 6-STEP PROTOCOL</p>
                         <h2 class="font-mincho text-3xl md:text-5xl font-bold text-navy-900 leading-tight">
-                            治療の流れ（全6ステップ）
+                            治療の流れ<br>
+                            <span class="text-2xl sm:text-3xl md:text-4xl">（全6ステップ）</span>
                         </h2>
                     </div>
                     <p class="text-sm md:text-base text-slate-600 font-medium max-w-xl">いきなり手術は行いません。精密診断からメンテナンスまで、1本の連続した安全プロトコルで進めます。</p>
@@ -1835,9 +1845,9 @@
         <section class="py-24 md:py-36 bg-surface border-t border-slate-200" id="specifications">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal-up">
-                    <div>
+                    <div class="shrink-0">
                         <p class="font-en text-xs font-extrabold tracking-[0.25em] text-medical-600 uppercase mb-3">SPECIFICATIONS &amp; PRICING</p>
-                        <h2 class="font-mincho text-3xl md:text-5xl font-bold text-navy-900">
+                        <h2 class="font-mincho text-2xl sm:text-3xl md:text-[2.35rem] lg:text-[2.6rem] font-bold text-navy-900 leading-tight">
                             治療体制・費用のご案内
                         </h2>
                     </div>
@@ -1909,31 +1919,31 @@
                                 <th class="bg-navy-900 text-white p-4 text-left font-bold w-1/3 md:w-1/4">認定・実績</th>
                                 <td class="p-4 text-slate-700"><span class="font-bold text-navy-900">OSSTEM IMPLANT 臨床研究歯科医院</span>（2022年認定）／ 累計400症例以上</td>
                             </tr>
-                            <tr class="border-b border-slate-200">
-                                <th class="bg-navy-900 text-white p-4 text-left font-bold">採用システム</th>
-                                <td class="p-4 text-slate-700">OSSTEM社製（世界シェア上位インプラントシステムに特化）</td>
-                            </tr>
-                            <tr class="border-b border-slate-200">
-                                <th class="bg-navy-900 text-white p-4 text-left font-bold">対応難症例</th>
-                                <td class="p-4 text-slate-700"><span class="font-bold text-medical-600">骨造成</span>（GBR・ソケットリフト等）、<span class="font-bold text-medical-600">歯肉形成術</span>（APF・FGG・CTG等）</td>
-                            </tr>
-                            <tr class="border-b border-slate-200">
-                                <th class="bg-navy-900 text-white p-4 text-left font-bold">安全管理体制</th>
-                                <td class="p-4 text-slate-700">3D-CT数値診断、<span class="font-bold text-navy-900">全例サージカルガイド使用</span>、静脈内鎮静法対応、院長・担当医ダブルチェック</td>
-                            </tr>
-                            <tr>
-                                <th class="bg-navy-900 text-white p-4 text-left font-bold">治療方針</th>
-                                <td class="p-4 text-slate-700">残存歯の保護と<span class="font-bold text-navy-900">1本ごとの長期的な安全性</span>を第一に考えるため、All-on-4やザイゴマ等の特殊多本数即時手術は行いません。</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="text-center reveal-up">
-                    <a href="https://www.nakamura-sika.net/dental/price.php" class="inline-flex items-center justify-center gap-3 bg-navy-900 hover:bg-navy-800 text-white font-bold py-4 px-10 transition-colors text-sm sm:text-base tracking-wider">
-                        <span>インプラント治療の詳しい料金表を見る</span>
-                        <span class="font-en">→</span>
-                    </a>
+                <!-- ガイド・相談室リンク（FAQとは明確に差別化した高視認性バナー） -->
+                <div class="mt-16 pt-12 border-t border-slate-300 reveal-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-2.5 h-2.5 bg-medical-600 inline-block"></span>
+                        <span class="font-en text-xs font-extrabold tracking-[0.2em] text-navy-900 uppercase">RELATED RESOURCES</span>
+                        <span class="text-xs font-bold text-slate-500">｜ さらに詳しく知りたい方へ</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <a href="https://www.nakamura-sika.net/implant-guide/index.html" class="bg-navy-900 hover:bg-navy-800 text-white border-l-4 border-medical-500 p-6 sm:p-8 shadow-md transition-all flex items-center justify-between gap-4 group">
+                            <div>
+                                <span class="font-en text-xs font-extrabold tracking-widest text-gold-400 block mb-1">IMPLANT GUIDE</span>
+                                <span class="font-bold text-white text-lg sm:text-xl block mb-1">インプラント治療ガイドを見る</span>
+                                <span class="text-xs text-slate-300 block">治療の基礎知識から流れ・選び方まで分かりやすく解説</span>
+                            </div>
+                            <span class="w-11 h-11 bg-white/10 group-hover:bg-medical-600 transition-colors flex items-center justify-center font-en text-xl text-white shrink-0">→</span>
+                        </a>
+                        <a href="https://www.nakamura-sika.net/implant/" class="bg-medical-600 hover:bg-medical-700 text-white border-l-4 border-navy-900 p-6 sm:p-8 shadow-md transition-all flex items-center justify-between gap-4 group">
+                            <div>
+                                <span class="font-en text-xs font-extrabold tracking-widest text-medical-100 block mb-1">DOCTOR COLUMN</span>
+                                <span class="font-bold text-white text-lg sm:text-xl block mb-1">福山市のインプラント相談室</span>
+                                <span class="text-xs text-medical-100 block">歯科医師による専門コラム・お悩み別アドバイスを公開中</span>
+                            </div>
+                            <span class="w-11 h-11 bg-navy-950/20 group-hover:bg-navy-900 transition-colors flex items-center justify-center font-en text-xl text-white shrink-0">→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2582,6 +2592,13 @@
                 hamburgerBtn.addEventListener('click', toggleMenu);
                 closeMenuBtn.addEventListener('click', toggleMenu);
                 spMenuOverlay.addEventListener('click', toggleMenu);
+                document.querySelectorAll('.sp-menu-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (spMenu.classList.contains('open')) {
+                            toggleMenu();
+                        }
+                    });
+                });
             }
         });
     </script>
