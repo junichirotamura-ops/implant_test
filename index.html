@@ -13,6 +13,11 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.nakamura-sika.net/implant-lp">
 
+    <!-- External Domain Preconnect & Hero Image Preload -->
+    <link rel="dns-prefetch" href="https://www.nakamura-sika.net">
+    <link rel="preconnect" href="https://www.nakamura-sika.net" crossorigin>
+    <link rel="preload" as="image" href="images/2.JPG" fetchpriority="high">
+
     <!-- Fonts: Noto Sans JP + Shippori Mincho + Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,10 +65,10 @@
         }
     </script>
 
-    <!-- Lenis & GSAP for Kinetic Sophistication -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis & GSAP for Kinetic Sophistication (deferでHTMLパースとFV画像読み込みをブロックしない) -->
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
         /* スマホでの横スクロール・右端余白の完全防止 */
@@ -311,11 +316,11 @@
             </div>
         </div>
         
-        <!-- ロゴ＆ブランドタイトル＆CTAエリア -->
+        /* ロゴ＆ブランドタイトル＆CTAエリア */
         <div class="w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:px-16 py-2.5 md:py-3 flex justify-between items-center">
             <div class="flex items-center gap-3 sm:gap-5">
                 <a href="https://www.nakamura-sika.net/" class="inline-block">
-                    <img src="https://www.nakamura-sika.net/_share/logo.png" alt="なかむら歯科クリニック" class="h-8 sm:h-10 md:h-11 object-contain">
+                    <img src="https://www.nakamura-sika.net/_share/logo.png" alt="なかむら歯科クリニック" width="220" height="44" decoding="async" class="h-8 sm:h-10 md:h-11 w-auto object-contain">
                 </a>
                 <div class="hidden sm:flex flex-col border-l border-champagne-400/60 pl-4 md:pl-5">
                     <span class="font-en text-[10px] font-extrabold tracking-[0.26em] text-champagne-600 uppercase">IMPLANT SPECIALTY SITE</span>
@@ -491,6 +496,9 @@
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img src="images/1.jpg" 
                      alt="福山市 なかむら歯科クリニック マイクロスコープ・大型CTモニター完備の特診室" 
+                     width="1600" height="900"
+                     loading="eager"
+                     decoding="async"
                      class="w-full h-full object-cover object-center opacity-50 animate-ken-burns">
                 <div class="absolute inset-0 bg-gradient-to-r from-[#08121E]/95 via-navy-950/88 to-navy-900/45"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-[#08121E] via-transparent to-[#08121E]/45"></div>
@@ -501,13 +509,17 @@
             <div class="w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:px-16 pt-6 pb-8 md:py-8 lg:py-10 my-auto relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 items-center">
                     
-                    <!-- スマホ表示時のみ：ファーストビュー最上部に院長処置写真を配置 -->
+                    <!-- スマホ表示時のみ：ファーストビュー最上部に院長処置写真を配置（最優先読み込み） -->
                     <div class="block lg:hidden hero-reveal">
                         <div class="relative border border-champagne-400/40 bg-navy-900 overflow-hidden shadow-xl">
                             <div class="aspect-[16/9] overflow-hidden relative">
                                 <img src="images/2.JPG" 
                                      onerror="this.onerror=null; this.src='images/2.jpg';" 
                                      alt="拡大鏡（ルーペ）を装着しインプラント手術を行うなかむら歯科クリニック院長" 
+                                     width="800" height="450"
+                                     loading="eager"
+                                     fetchpriority="high"
+                                     decoding="sync"
                                      class="w-full h-full object-cover object-[center_28%]">
                                 <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/10 to-transparent"></div>
                                 <div class="absolute top-2.5 right-2.5 bg-navy-950/85 px-2.5 py-1 border border-champagne-400/30">
@@ -569,6 +581,10 @@
                                     <img src="images/2.JPG" 
                                          onerror="this.onerror=null; this.src='images/2.jpg';" 
                                          alt="拡大鏡（ルーペ）を装着しインプラント手術を行うなかむら歯科クリニック院長" 
+                                         width="1000" height="800"
+                                         loading="eager"
+                                         fetchpriority="high"
+                                         decoding="sync"
                                          class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000">
                                     <div class="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/15 to-transparent"></div>
                                     
@@ -1131,6 +1147,9 @@
                                 <div class="aspect-[16/10] overflow-hidden">
                                     <img src="images/4.jpg" 
                                          alt="OSSTEM IMPLANT 臨床研究歯科医院 認定証" 
+                                         width="800" height="500"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </div>
                                 <div class="absolute bottom-0 left-0 bg-navy-950/90 text-champagne-300 font-en text-[10px] font-bold tracking-[0.22em] px-4 py-2 border-t border-r border-champagne-400/30">
@@ -1173,6 +1192,9 @@
                                 <div class="aspect-[16/10] overflow-hidden">
                                     <img src="images/5.jpg" 
                                          alt="モニターを確認しながらインプラント手術を行う様子" 
+                                         width="800" height="500"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </div>
                                 <div class="absolute bottom-0 right-0 bg-navy-950/90 text-champagne-300 font-en text-[10px] font-bold tracking-[0.22em] px-4 py-2 border-t border-l border-champagne-400/30">
@@ -1189,6 +1211,9 @@
                                 <div class="aspect-[16/10] overflow-hidden">
                                     <img src="images/6.jpg" 
                                          alt="歯科用3D-CT撮影装置" 
+                                         width="800" height="500"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </div>
                                 <div class="absolute bottom-0 left-0 bg-navy-950/90 text-champagne-300 font-en text-[10px] font-bold tracking-[0.22em] px-4 py-2 border-t border-r border-champagne-400/30">
@@ -1231,6 +1256,9 @@
                                 <div class="aspect-[16/10] overflow-hidden">
                                     <img src="images/7.jpg" 
                                          alt="歯科医師チームによるCT診断カンファレンス風景" 
+                                         width="800" height="500"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </div>
                                 <div class="absolute bottom-0 right-0 bg-navy-950/90 text-champagne-300 font-en text-[10px] font-bold tracking-[0.22em] px-4 py-2 border-t border-l border-champagne-400/30">
@@ -1291,6 +1319,9 @@
                                     <img src="images/8.png" 
                                          onerror="this.src='https://placehold.co/960x540/0B1726/C5A059?text=CASE+006498+%7C+BEFORE+%E2%86%92+AFTER'" 
                                          alt="CASE 006498 上顎奥歯の破折 ソケットリフト・GBR・APF症例 治療前・治療後比較" 
+                                         width="960" height="540"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-navy-950/90 text-slate-200 font-en text-[10px] font-bold tracking-[0.2em] px-2.5 py-1 border border-white/20">BEFORE</span>
                                     <span class="absolute top-3 right-3 bg-champagne-400 text-navy-950 font-en text-[10px] font-extrabold tracking-[0.2em] px-2.5 py-1">AFTER</span>
@@ -1337,6 +1368,9 @@
                                     <img src="images/9.png" 
                                          onerror="this.src='https://placehold.co/960x540/0B1726/C5A059?text=CASE+005930+%7C+BEFORE+%E2%86%92+AFTER'" 
                                          alt="CASE 005930 骨が少ない奥歯 GBR・APF症例 治療前・治療後比較" 
+                                         width="960" height="540"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-navy-950/90 text-slate-200 font-en text-[10px] font-bold tracking-[0.2em] px-2.5 py-1 border border-white/20">BEFORE</span>
                                     <span class="absolute top-3 right-3 bg-champagne-400 text-navy-950 font-en text-[10px] font-extrabold tracking-[0.2em] px-2.5 py-1">AFTER</span>
@@ -1382,6 +1416,9 @@
                                     <img src="images/10.png" 
                                          onerror="this.src='https://placehold.co/960x540/0B1726/C5A059?text=CASE+001163+%7C+GBR+%2B+FGG+%E6%AF%94%E8%BC%83%E7%97%87%E4%BE%8B'" 
                                          alt="CASE 001163 骨造成・歯肉移植症例 治療前・治療後比較" 
+                                         width="960" height="540"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-navy-950/90 text-slate-200 font-en text-[10px] font-bold tracking-[0.2em] px-2.5 py-1 border border-white/20">BEFORE</span>
                                     <span class="absolute top-3 right-3 bg-champagne-400 text-navy-950 font-en text-[10px] font-extrabold tracking-[0.2em] px-2.5 py-1">AFTER</span>
@@ -1427,6 +1464,9 @@
                                     <img src="images/11.png" 
                                          onerror="this.src='https://placehold.co/960x540/0B1726/C5A059?text=CASE+001729+%7C+SOCKET+LIFT+%E6%AF%94%E8%BC%83%E7%97%87%E4%BE%8B'" 
                                          alt="CASE 001729 ソケットリフト症例 治療前・治療後比較" 
+                                         width="960" height="540"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-navy-950/90 text-slate-200 font-en text-[10px] font-bold tracking-[0.2em] px-2.5 py-1 border border-white/20">BEFORE</span>
                                     <span class="absolute top-3 right-3 bg-champagne-400 text-navy-950 font-en text-[10px] font-extrabold tracking-[0.2em] px-2.5 py-1">AFTER</span>
@@ -1471,6 +1511,9 @@
                                     <img src="images/12.png" 
                                          onerror="this.src='https://placehold.co/960x540/0B1726/C5A059?text=CASE+002498+%7C+FLAPLESS+%E6%AF%94%E8%BC%83%E7%97%87%E4%BE%8B'" 
                                          alt="CASE 002498 フラップレス1回法症例 治療前・治療後比較" 
+                                         width="960" height="540"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-navy-950/90 text-slate-200 font-en text-[10px] font-bold tracking-[0.2em] px-2.5 py-1 border border-white/20">BEFORE</span>
                                     <span class="absolute top-3 right-3 bg-champagne-400 text-navy-950 font-en text-[10px] font-extrabold tracking-[0.2em] px-2.5 py-1">AFTER</span>
@@ -1516,6 +1559,9 @@
                                     <img src="images/13.png" 
                                          onerror="this.src='https://placehold.co/960x540/0B1726/C5A059?text=CASE+001174+%7C+GBR+%2B+2+IMPLANTS+%E6%AF%94%E8%BC%83%E7%97%87%E4%BE%8B'" 
                                          alt="CASE 001174 GBR・歯肉移植2本症例 治療前・治療後比較" 
+                                         width="960" height="540"
+                                         loading="lazy"
+                                         decoding="async"
                                          class="w-full h-full object-cover">
                                     <span class="absolute top-3 left-3 bg-navy-950/90 text-slate-200 font-en text-[10px] font-bold tracking-[0.2em] px-2.5 py-1 border border-white/20">BEFORE</span>
                                     <span class="absolute top-3 right-3 bg-champagne-400 text-navy-950 font-en text-[10px] font-extrabold tracking-[0.2em] px-2.5 py-1">AFTER</span>
@@ -1621,7 +1667,7 @@
 
                             <div class="border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                                 <div class="md:col-span-5 h-48 sm:h-56 md:h-64 bg-slate-100">
-                                    <img src="images/14.png" alt="STEP 01 診査・診断・3D-CT撮影" class="w-full h-full object-cover">
+                                    <img src="images/14.png" alt="STEP 01 診査・診断・3D-CT撮影" width="800" height="500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                                 </div>
                                 <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
                                     <span class="font-en text-[10px] sm:text-[11px] font-bold text-champagne-600 tracking-[0.25em] mb-1">PHASE 01 // 3D DIAGNOSTICS</span>
@@ -1644,7 +1690,7 @@
 
                             <div class="border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                                 <div class="md:col-span-5 h-48 sm:h-56 md:h-64 bg-slate-100">
-                                    <img src="images/15.jpg" alt="STEP 02 事前クリーニング（一口腔内管理）" class="w-full h-full object-cover">
+                                    <img src="images/15.jpg" alt="STEP 02 事前クリーニング（一口腔内管理）" width="800" height="500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                                 </div>
                                 <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
                                     <span class="font-en text-[10px] sm:text-[11px] font-bold text-champagne-600 tracking-[0.25em] mb-1">PHASE 02 // ORAL PREPARATION</span>
@@ -1667,7 +1713,7 @@
 
                             <div class="border-2 border-champagne-400 bg-champagne-50/20 grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                                 <div class="md:col-span-5 h-48 sm:h-56 md:h-64 bg-slate-100">
-                                    <img src="images/16.jpg" alt="STEP 03 一次手術（人工歯根の埋入）" class="w-full h-full object-cover">
+                                    <img src="images/16.jpg" alt="STEP 03 一次手術（人工歯根の埋入）" width="800" height="500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                                 </div>
                                 <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
                                     <span class="font-en text-[10px] sm:text-[11px] font-bold text-champagne-600 tracking-[0.25em] mb-1">PHASE 03 // PRIMARY SURGERY</span>
@@ -1690,7 +1736,7 @@
 
                             <div class="border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                                 <div class="md:col-span-5 h-48 sm:h-56 md:h-64 bg-slate-100">
-                                    <img src="images/17.jpg" alt="STEP 04 二次手術・歯肉の治癒待ち" class="w-full h-full object-cover">
+                                    <img src="images/17.jpg" alt="STEP 04 二次手術・歯肉の治癒待ち" width="800" height="500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                                 </div>
                                 <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
                                     <span class="font-en text-[10px] sm:text-[11px] font-bold text-champagne-600 tracking-[0.25em] mb-1">PHASE 04 // OSSEOINTEGRATION</span>
@@ -1713,7 +1759,7 @@
 
                             <div class="border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                                 <div class="md:col-span-5 h-48 sm:h-56 md:h-64 bg-slate-100">
-                                    <img src="images/18.jpg" alt="STEP 05 セラミック人工歯の装着" class="w-full h-full object-cover">
+                                    <img src="images/18.jpg" alt="STEP 05 セラミック人工歯の装着" width="800" height="500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                                 </div>
                                 <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
                                     <span class="font-en text-[10px] sm:text-[11px] font-bold text-champagne-600 tracking-[0.25em] mb-1">PHASE 05 // FINAL PROSTHESIS</span>
@@ -1735,7 +1781,7 @@
 
                             <div class="border border-slate-200 bg-white grid grid-cols-1 md:grid-cols-12 overflow-hidden">
                                 <div class="md:col-span-5 h-48 sm:h-56 md:h-64 bg-slate-100">
-                                    <img src="images/19.JPG" alt="STEP 06 3年保証＆定期メンテナンス" class="w-full h-full object-cover">
+                                    <img src="images/19.JPG" alt="STEP 06 3年保証＆定期メンテナンス" width="800" height="500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                                 </div>
                                 <div class="md:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
                                     <span class="font-en text-[10px] sm:text-[11px] font-bold text-champagne-600 tracking-[0.25em] mb-1">PHASE 06 // LONG-TERM CARE</span>
@@ -1872,6 +1918,9 @@
                             <div class="aspect-[4/4] sm:aspect-[4/5] overflow-hidden bg-navy-900">
                                 <img src="images/20.jpg" 
                                      alt="なかむら歯科クリニック 院長 中村" 
+                                     width="600" height="750"
+                                     loading="lazy"
+                                     decoding="async"
                                      class="w-full h-full object-cover object-top brightness-105 contrast-95">
                             </div>
                             <div class="pt-3.5 pb-1 px-2 flex justify-between items-center">
@@ -2212,6 +2261,9 @@
                 <img src="images/21.jpg" 
                      onerror="this.onerror=null; this.src='images/1.jpg';" 
                      alt="なかむら歯科クリニック 診療空間" 
+                     width="1600" height="900"
+                     loading="lazy"
+                     decoding="async"
                      class="w-full h-full object-cover opacity-20">
                 <div class="absolute inset-0 bg-gradient-to-b from-navy-950/90 via-navy-950/85 to-[#08121E]/95"></div>
             </div>
@@ -2317,7 +2369,7 @@
             <!-- 医院情報エリア -->
             <div class="flex flex-col lg:flex-row gap-10 items-start justify-between mb-10">
                 <div class="w-full lg:w-1/2">
-                    <img src="https://www.nakamura-sika.net/_share/logo.png" alt="なかむら歯科クリニック" class="h-12 object-contain mb-4">
+                    <img src="https://www.nakamura-sika.net/_share/logo.png" alt="なかむら歯科クリニック" width="240" height="48" loading="lazy" decoding="async" class="h-12 w-auto object-contain mb-4">
                     <p class="text-navy-950 font-bold text-lg mb-2">なかむら歯科クリニック</p>
                     <div class="text-slate-600 text-xs space-y-1 mb-5">
                         <p>〒721-0942 広島県福山市引野町３丁目３７−２７（駐車場61台完備）</p>
@@ -2413,14 +2465,16 @@
                 });
                 gsap.ticker.lagSmoothing(0);
 
-                /* Hero Entrance */
-                gsap.from('.hero-reveal', {
-                    y: 22,
-                    opacity: 0,
-                    duration: 1.25,
-                    stagger: 0.12,
-                    ease: 'power4.out'
-                });
+                /* Hero Entrance（モバイル初期表示のLCP遅延を防ぐためPCのみ適用） */
+                if (window.innerWidth >= 768) {
+                    gsap.from('.hero-reveal', {
+                        y: 22,
+                        opacity: 0,
+                        duration: 1.25,
+                        stagger: 0.12,
+                        ease: 'power4.out'
+                    });
+                }
 
                 /* Section Scroll Reveals */
                 gsap.utils.toArray('.reveal-up').forEach((el) => {
@@ -2435,6 +2489,25 @@
                         duration: 1.15,
                         ease: 'power4.out'
                     });
+                });
+            }
+
+            /* 遅延読み込み画像の事前ウォームアップ（画面手前450pxでネイティブ読み込みを開始・二重処理なし） */
+            if ('IntersectionObserver' in window) {
+                const lazyWarmupObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.loading === 'lazy') {
+                                img.loading = 'eager';
+                            }
+                            observer.unobserve(img);
+                        }
+                    });
+                }, { rootMargin: '450px 0px' });
+
+                document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                    lazyWarmupObserver.observe(img);
                 });
             }
 
@@ -2491,6 +2564,10 @@
                         const categories = card.getAttribute('data-category').split(' ');
                         if (filter === 'all' || categories.includes(filter)) {
                             card.style.display = 'flex';
+                            const lazyImg = card.querySelector('img[loading="lazy"]');
+                            if (lazyImg) {
+                                lazyImg.loading = 'eager';
+                            }
                         } else {
                             card.style.display = 'none';
                         }
